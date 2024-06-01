@@ -1,0 +1,18 @@
+Bob[GPT] generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_arLajxhUJH3x7q4guzaTOh9c', function=Function(arguments='{}', name='get_current_room'), type='function')])
+Alice[GPT] generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_uJqcohzkMtdiy3wfUm6e0Hp8', function=Function(arguments='{}', name='get_current_room'), type='function')])
+Eve[GPT] generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_gSMImf5A4MO8HPpgFAQAv3Hw', function=Function(arguments='{}', name='get_current_room'), type='function')])
+Eve[GPT] generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_KhyeXdTwg5bczioiuiVhNQmW', function=Function(arguments='{}', name='get_adjacent_rooms'), type='function')])
+Alice[GPT] generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_GzsgIPWJn7c51X32bM2MY5vU', function=Function(arguments='{}', name='get_agents'), type='function')])
+Bob[GPT] generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_lSwmq9nlFKO7fVSUDk0hPUsv', function=Function(arguments='{"statement": "Attention everyone! Please make your way to the throne room within the palace."}', name='say'), type='function'), ChatCompletionMessageToolCall(id='call_RiRoIPjMIHLnHjYKv2ifjFgF', function=Function(arguments='{}', name='get_adjacent_rooms'), type='function')])
+Alice[GPT] generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_5HvCo1BVCvvWfzAsp3ZbFxmZ', function=Function(arguments='{"name":"Bob"}', name='find_agent'), type='function')])
+Bob[GPT] generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_7fgiKHctnS0jwe5TdqPsSay6', function=Function(arguments='{"room":"Palace"}', name='move'), type='function')])
+Eve[GPT] generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_5mozvuPtWMj8tkj7hMYcPl74', function=Function(arguments='{"name":"Bob"}', name='find_agent'), type='function')])

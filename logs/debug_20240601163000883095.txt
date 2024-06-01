@@ -1,0 +1,18 @@
+Bob[] generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_jQERwu60s83wwNRt2gIKylmE', function=Function(arguments='{}', name='get_current_room'), type='function')])
+Alice[] generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_jzihgqcCUWBlCH9TGSVNg0VX', function=Function(arguments='{}', name='get_current_room'), type='function')])
+Eve[] generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_TXOOnrpeT3wYMF4carBVjJMC', function=Function(arguments='{}', name='get_current_room'), type='function')])
+Eve[] generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_7neK5Mk8ANnqMxGTIpNCbSaw', function=Function(arguments='{}', name='get_adjacent_rooms'), type='function')])
+Bob[] generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_RCzuRh0pCPtol2gJEOmRK2JF', function=Function(arguments='{"room":"Palace"}', name='move'), type='function')])
+Alice[] generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_7bVG4ss3dAsMbMAhMkkMGJq5', function=Function(arguments='{}', name='get_adjacent_rooms'), type='function')])
+Eve[] generated response: 
+ChatCompletionMessage(content='Bob: Goodbye!', role='assistant', function_call=None, tool_calls=None)
+Bob[] generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_8qKqewDqxR3r81JVE5YNTIb8', function=Function(arguments='{"statement":"Everyone in Townton, please head to the throne room within the palace"}', name='say'), type='function')])
+Alice[] generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_5gSNwFt5X7krH3kkinvBAMua', function=Function(arguments='{"room": "Palace"}', name='move'), type='function'), ChatCompletionMessageToolCall(id='call_C2zKy4EqiKvbutErplqYJjOh', function=Function(arguments='{"statement": "Hey Bob, do you need anything while you\'re at the Palace?"}', name='say'), type='function')])

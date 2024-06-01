@@ -1,11 +1,19 @@
 import json
-
+from dataclasses import dataclass
 from typing import List
 
-from simulated.agent_wrapper import ToolCall
 from .tools_metaclass import Tool, ToolMeta, EnvironmentProperty, FunctionProperty
 
 TOOL_COMPLETED_DEFAULT = 'Completed'
+
+@dataclass
+class ToolCallFunction:
+    name: str
+    arguments: str  # str-ified json
+
+@dataclass
+class ToolCall:
+    function: ToolCallFunction
 
 def handle_tool_call(tool_call: ToolCall, env: dict) -> dict:
     tool_name = tool_call.function.name

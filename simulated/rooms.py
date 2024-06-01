@@ -70,7 +70,7 @@ class TownEnvironment(Environment):
         super().__init__(default='Town Square')
         self.env_name = town_name
         for room in rooms:
-            Room(name=room, connect_to=self.default_room)
+            Room(name=room, environment=self, connect_to={self.default_room})
 
 class Agent:
 

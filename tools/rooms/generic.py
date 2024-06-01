@@ -1,4 +1,4 @@
-from .tools_metaclass import EnvironmentProperty, FunctionProperty, Tool, ToolMeta
+from ..tools_metaclass import EnvironmentProperty, FunctionProperty, Tool, ToolMeta, ToolReq, ToolReqAny
 from simulated.rooms import Room, Environment, Agent, RoomException
 
 class SayTool(Tool, metaclass=ToolMeta):
@@ -54,10 +54,11 @@ class FindAgentTool(Tool, metaclass=ToolMeta):
     DESCRIPTION = 'Returns the room of a nearby person'
     ENV_PARAMETERS = [EnvironmentProperty(name='agent')]
     PARAMETERS = [FunctionProperty(name='name', type='string', description='The name of the person to find', required=True)]
+    ROLES = ToolReq('ability_find')
 
     def __call__(self, agent: Agent, name: str):
         try:
-            agent_to_find = agent.environment.all_agents[name]
+            agent_to_find = agent.environment.all_agents_by_name[name]
         except KeyError:
             return f"No person by the name {name} exists!"
         room = agent.current_room.find(agent_to_find)

@@ -1,4 +1,3 @@
-from enum import Enum
 from typing import Any, List, Callable, Dict, Set
 
 class FunctionProperty:
@@ -15,35 +14,26 @@ class EnvironmentProperty:
         self.name = name
         self.default = default
 
-
-class ToolReqType(Enum):
-    NONE = 0
-    ROLE = 1
-
-    ALL = 11
-    ANY = 12
-
 class ToolReq:
-    def __init__(self, req_type: ToolReqType, value: str | Set["ToolReq"] | None = None):
-        self.req_type = req_type
-        self.value = value
+    def __init__(self, *values: str | 'ToolReq'):
+        self.values = values
 
     def validate(self, roles: Set[str]):
-        if self.req_type == ToolReqType.NONE:
-            return True
-        elif self.req_type == ToolReqType.ROLE:
-            return self.value in roles
-        elif self.req_type == ToolReqType.ALL:
-            return all(sub_tool_req.validate(roles) for sub_tool_req in self.value)
-        elif self.req_type == ToolReqType.ANY:
-            return any(sub_tool_req.validate(roles) for sub_tool_req in self.value)
+        return all(sub_tool_req in roles if isinstance(sub_tool_req, str) else sub_tool_req.validate(roles) for sub_tool_req in self.values)
+
+class ToolReqAny:
+    def __init__(self, *values: str | 'ToolReq'):
+        self.values = values
+
+    def validate(self, roles: Set[str]):
+        return any(sub_tool_req in roles if isinstance(sub_tool_req, str) else sub_tool_req.validate(roles) for sub_tool_req in self.values)
 
 class Tool:
     NAME: str # must be alphanumeric or '-' or '_' and len < 64
     DESCRIPTION: str
     ENV_PARAMETERS: List[EnvironmentProperty] = []
     PARAMETERS: List[FunctionProperty] = []
-    REQS: ToolReq = ToolReq(ToolReqType.NONE)
+    REQS: ToolReq | ToolReqAny = ToolReq()
 
     def __call__(cls, *args, **kwargs) -> str | None:
         pass

@@ -1,0 +1,6 @@
+Alice[] generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_zCm6h3QkeVPV2IZsucrzhzH8', function=Function(arguments='{}', name='get_current_room'), type='function')])
+Bob[] generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_G3UbIAQYiTMN91RbqidCe7i1', function=Function(arguments='{}', name='get_current_room'), type='function')])
+Eve[] generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_arLajxhUJH3x7q4guzaTOh9c', function=Function(arguments='{}', name='get_current_room'), type='function')])

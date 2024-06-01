@@ -1,0 +1,16 @@
+Alice[GPT] generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_EZVcf2kc64cDODaJg0bsLHs2', function=Function(arguments='{}', name='get_current_room'), type='function')])
+Bob[GPT] generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_D6lkcwSlAPKu3lZBIT4gBI1K', function=Function(arguments='{}', name='get_current_room'), type='function')])
+Eve[GPT] generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_secpbIn4lePKvgKHA05B3ufo', function=Function(arguments='{}', name='get_current_room'), type='function')])
+Eve[GPT] generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_BEhKcI8PiJIqyaojhhmIgC2B', function=Function(arguments='{}', name='get_adjacent_rooms'), type='function')])
+Alice[GPT] generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_pQF7DaCEUeyVvDvEL1yOgBwH', function=Function(arguments='{}', name='get_adjacent_rooms'), type='function')])
+Bob[GPT] generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_gWARMJzgMDaDegJdHnzW1eMi', function=Function(arguments='{}', name='get_adjacent_rooms'), type='function'), ChatCompletionMessageToolCall(id='call_jraWkUSXJj6FOFR5XRzqmgea', function=Function(arguments='{"statement": "Everyone, please gather in the Throne Room within the Palace. Let\'s head there now."}', name='say'), type='function')])
+Alice[GPT] generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_jpYw1XquBXTHJoEoz0hHzRwF', function=Function(arguments='{"room":"Palace"}', name='move'), type='function')])
+Eve[GPT] generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_8PWg3sTLccyOUltngcrAW7rO', function=Function(arguments='{"statement":"Bob, I will make my way to the Palace shortly."}', name='say'), type='function')])

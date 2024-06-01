@@ -4,17 +4,8 @@ from dataclasses import dataclass
 
 
 from simulated.rooms import Agent, Environment
-from tools import handle_tool_calls, ToolMeta
-from utils import debug_log
-
-@dataclass
-class ToolCallFunction:
-    name: str
-    arguments: str  # str-ified json
-
-@dataclass
-class ToolCall:
-    function: ToolCallFunction
+from tools import handle_tool_calls, ToolMeta, ToolCall
+from utils import debug_log, warn_log
 
 @dataclass
 class AgentMessage:
@@ -64,8 +55,10 @@ class AgentWrapper:
     def update_pre(self):
         self.add_message('\n'.join(self.simulation_agent.read_heard_statements()))
 
-    def update_post(self, message: AgentMessage):
+    def update_with_response(self, message: AgentMessage):
         self.message_history.append(message)
+        if message.content is not None:
+            warn_log(f'{self.name}[{self.TYPE}] generated nonempty content "{message.content}"')
         debug_log(f'{self.name}[{self.TYPE}] generated response: ')
         debug_log(message)
         tool_resps = handle_tool_calls(message.tool_calls, {'agent': self.simulation_agent})
@@ -75,10 +68,12 @@ class AgentWrapper:
         self.simulation_agent.tick_status()
     
     def update(self):
-        self.update_pre()
-        self.update_post(self.get_response())
+        self.update_with_response(self.get_response())
 
 class AsyncAgentWrapper(AgentWrapper):
+    async def update_pre(self):
+        self.add_message('\n'.join(self.simulation_agent.read_heard_statements()))
+
     async def update(self):
-        self.update_pre()
-        self.update_post(await self.get_response())
+        # to guaruntee concurrency run update_pre() separately
+        self.update_with_response(await self.get_response())

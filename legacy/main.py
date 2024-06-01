@@ -1,9 +1,9 @@
+import threading
 
-
-import asyncio
-from async_gpt import AsyncGPTAgent
+from tools import ToolMeta
+from gpt import GPTAgent
 from render import PygameView
-from simulated.rooms import Room, TownEnvironment
+from simulated.rooms import Agent, Environment, Room, TownEnvironment
 
 from utils import debug_log
 
@@ -13,10 +13,16 @@ Room('Winery', town_env, connect_to={town_env.default_room, Room('Cellar', town_
 Room('Palace', town_env, connect_to={town_env.default_room, Room('Throne Room', town_env), Room('Dungeon', town_env)})
 
 agents = [
-    AsyncGPTAgent('Alice', 'villager', 'have a 1-on-1 conversation with each resident of Townton', town_env, {'villager'}),
-    AsyncGPTAgent('Bob', 'villager', 'direct everyone in Townton to go to the throne room within the palace', town_env, {'villager'}),
-    AsyncGPTAgent('Eve', 'merchant', 'recruit someone in Townton to stay at the market', town_env, {'villager'}),
+    GPTAgent('Alice', 'villager', 'have a 1-on-1 conversation with each resident of Townton', town_env, {'villager'}),
+    GPTAgent('Bob', 'villager', 'direct everyone in Townton to go to the throne room within the palace', town_env, {'villager'}),
+    GPTAgent('Eve', 'merchant', 'recruit someone in Townton to stay at the market', town_env, {'villager'}),
+    # GPTAgent('Charlie', 'student', 'find a job in Townton', town_env, {'villager'}),
+    # GPTAgent('Winston', 'noble', 'buy something extravagant', town_env, {'villager'})
     ]
+
+# agents[0].simulation_agent.current_room = town_env.all_rooms['Market']
+# agents[2].simulation_agent.current_room = town_env.all_rooms['Market']
+
 
 for agent in agents:
     agent.add_message("Messages other people send you look like this: \n" +

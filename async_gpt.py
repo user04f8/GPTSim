@@ -1,7 +1,7 @@
 from openai import AsyncOpenAI
 # from tenacity import retry, wait_random_exponential, stop_after_attempt
 
-from simulated.agent_wrapper import AsyncAgentWrapper, AgentMessage
+from simulated.agent_wrapper import AsyncAgentWrapper
 
 GPT_MODEL = "gpt-3.5-turbo"
 client = AsyncOpenAI()
@@ -23,6 +23,7 @@ async def chat_completion_request(messages, tools=None, tool_choice=None, model=
         return e
     
 class AsyncGPTAgent(AsyncAgentWrapper):
+    TYPE = 'GPT'
     async def get_response(self):
         response = await chat_completion_request(
             messages=self.message_history,

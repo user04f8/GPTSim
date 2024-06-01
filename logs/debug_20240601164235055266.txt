@@ -1,0 +1,6 @@
+Bob[GPT] generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_IoxhkhhYAwxbETbpYaojV26k', function=Function(arguments='{}', name='get_current_room'), type='function')])
+Eve[GPT] generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_SucoE3ESoORQ5ZWASt3BhWJO', function=Function(arguments='{}', name='get_adjacent_rooms'), type='function')])
+Alice[GPT] generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_blwaLH6opblSe17qHK5UEhuS', function=Function(arguments='{}', name='get_current_room'), type='function')])
