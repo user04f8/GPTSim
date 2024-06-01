@@ -1,0 +1,7 @@
+Alice generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_5gSNwFt5X7krH3kkinvBAMua', function=Function(arguments='{}', name='get_current_room'), type='function')])
+Bob generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_HS73wtygaPHZVr1KRVlMpdXe', function=Function(arguments='{}', name='get_current_room'), type='function')])
+Eve generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_ODNZLFaZATRKjBRtdgZxgeEy', function=Function(arguments='{}', name='get_current_room'), type='function')])
+---

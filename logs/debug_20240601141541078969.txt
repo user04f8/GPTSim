@@ -1,0 +1,28 @@
+Alice generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_6LJWGE4PKhPlkqy0ijX2fUlH', function=Function(arguments='{}', name='get_current_room'), type='function')])
+Bob generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_GqfR1KVty02vReTwVrxOr6lv', function=Function(arguments='{}', name='get_current_room'), type='function')])
+Eve generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_9DtriBHG9s157zEdb02TgjxF', function=Function(arguments='{}', name='get_current_room'), type='function')])
+---
+Alice generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_JyYdbSuobD9XneFmACMHxuag', function=Function(arguments='{}', name='get_adjacent_rooms'), type='function')])
+Bob generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_mjA0dZAnrIbQ0TjstPXbVvAj', function=Function(arguments='{"room": "Palace"}', name='move'), type='function')])
+Eve generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_5EF3dyA9Djp9P8kEnj1rXoIF', function=Function(arguments='{"statement":"Bob exited to the Palace"}', name='say'), type='function')])
+---
+Alice generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_238NWqNC3d2UwRy8wru58Fhz', function=Function(arguments='{"room": "Palace"}', name='move'), type='function'), ChatCompletionMessageToolCall(id='call_MdHQcNcYQ2Mtvn4xFsPlPGEW', function=Function(arguments='{"statement": "Hi, Eve! How are you today?"}', name='say'), type='function')])
+Bob generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_3oWdpyNiK5v1tpJAxrPipL9y', function=Function(arguments='{"statement": "Hi, Alice! I\'m doing well, thank you. How can I help you today?"}', name='say'), type='function'), ChatCompletionMessageToolCall(id='call_0kiEfaqhfnBqXns5lTimNhCe', function=Function(arguments='{"name": "Alice"}', name='find_agent'), type='function')])
+Eve generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_u4dCneGkCdXpPRKZZ7eWA1ZF', function=Function(arguments='{"statement":"Alice exited to the Palace"}', name='say'), type='function')])
+---
+Alice generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_hTIyEcEjBgzjGeAVwZR9lkMU', function=Function(arguments='{"statement":"Hi, Bob! I was just checking in on everyone in Townton. How are things at the Palace?"}', name='say'), type='function')])
+Bob generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_7f6fJx0hRX5PBailg8IbjD4S', function=Function(arguments='{"statement": "Hi, Alice! Everything is going well here at the Palace. Thank you for checking in."}', name='say'), type='function'), ChatCompletionMessageToolCall(id='call_qLF2XOMds6NFlGfbEysUq8fS', function=Function(arguments='{"name": "Alice"}', name='find_agent'), type='function')])
+Eve generated response: 
+ChatCompletionMessage(content=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_3cMIQXtpFMMjVIdaxOOWqVKp', function=Function(arguments='{}', name='get_adjacent_rooms'), type='function')])
+---
