@@ -6,7 +6,7 @@ class SayTool(Tool, metaclass=ToolMeta):
     DESCRIPTION = 'Make a statement to everyone in the current room'
     ENV_PARAMETERS = [EnvironmentProperty(name='agent')]
     PARAMETERS = [FunctionProperty(name='statement', type='string', description='The statement to make', required=True)]
-
+    
     def __call__(self, agent: Agent, statement: str):
         agent.make_statement(statement)
 

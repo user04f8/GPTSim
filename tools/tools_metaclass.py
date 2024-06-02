@@ -38,8 +38,6 @@ class Tool:
     def __call__(cls, *args, **kwargs) -> str | None:
         pass
 
-
-
 class ToolMeta(type):
     tools: List[Dict] = []
     tool_reqs: List[ToolReq] = []

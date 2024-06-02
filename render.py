@@ -119,8 +119,7 @@ class PygameView:
 
         gfxdraw.aapolygon(self.screen, (ul, ur, br, bl), color)
         gfxdraw.filled_polygon(self.screen, (ul, ur, br, bl), color)
-
-
+    
     def render(self):
         self.screen.fill(COLORS['bg'])
 
