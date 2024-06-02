@@ -28,11 +28,13 @@ def reward(p1: Tuple[int, int], p2: Tuple[int, int]) -> float:
 #     x, y = p
 #     return - min(x - x_range[0], x_range[1] - x, y - y_range[0], y_range[1] - y, edge_size)
 
-def calculate_objective(room_positions: Dict[str, Tuple[int, int]], environment: Environment) -> float:
+def calculate_objective(room_positions: Dict[str, Tuple[int, int]], environment: Environment, old_room_pos: Dict[str, Tuple[int, int]] = {}) -> float:
     objective = 0.0
     rooms = list(environment.all_rooms_by_name.values())
     for i, room1 in enumerate(rooms):
         # objective += edge_penalty(room_positions[room1.name], x_range, y_range)
+        if room1.name in old_room_pos:
+            objective -= distance(room_positions[room1.name], old_room_pos[room1.name])
         for j, room2 in enumerate(rooms):
             if i < j:
                 if room2 in room1.adjacent_rooms:
@@ -41,9 +43,9 @@ def calculate_objective(room_positions: Dict[str, Tuple[int, int]], environment:
                     objective += reward(room_positions[room1.name], room_positions[room2.name])
     return objective
 
-def simulated_annealing(environment: Environment, x_range: Tuple[int, int], y_range: Tuple[int, int], initial_temp: float, cooling_rate: float) -> Dict[str, Tuple[int, int]]:
-    current_positions = {room.name: (random.randint(*x_range), random.randint(*y_range)) for room in environment.all_rooms_by_name.values()}
-    current_objective = calculate_objective(current_positions, environment)
+def simulated_annealing(environment: Environment, x_range: Tuple[int, int], y_range: Tuple[int, int], initial_temp: float, cooling_rate: float, old_room_pos) -> Dict[str, Tuple[int, int]]:
+    current_positions = {room.name: (old_room_pos[room.name] if room.name in old_room_pos else (random.randint(*x_range), random.randint(*y_range))) for room in environment.all_rooms_by_name.values()}
+    current_objective = calculate_objective(current_positions, environment, old_room_pos)
     temp = initial_temp
 
     while temp > 1:
@@ -51,7 +53,7 @@ def simulated_annealing(environment: Environment, x_range: Tuple[int, int], y_ra
         room_to_move = random.choice(list(new_positions.keys()))
         new_positions[room_to_move] = (random.randint(*x_range), random.randint(*y_range))
 
-        new_objective = calculate_objective(new_positions, environment)
+        new_objective = calculate_objective(new_positions, environment, old_room_pos)
         delta = new_objective - current_objective
 
         if delta > 0 or random.uniform(0, 1) < math.exp(delta / temp):
@@ -62,13 +64,18 @@ def simulated_annealing(environment: Environment, x_range: Tuple[int, int], y_ra
 
     return current_positions
 
-def optimize_room_positions(environment: Environment, x_range: Tuple[int, int], y_range: Tuple[int, int]) -> Dict[str, Tuple[int, int]]:
+def optimize_room_positions(environment: Environment, x_range: Tuple[int, int], y_range: Tuple[int, int], old_room_pos=None) -> Dict[str, Tuple[int, int]]:
     initial_temp = 100.0
     cooling_rate = 0.997
-    n_tries = 5
+    
+    if old_room_pos is None:
+        old_room_pos = {}
+
+    n_tries = 2
     max_obj = None
+
     for i in range(n_tries):
-        candidate_pos = simulated_annealing(environment, x_range, y_range, initial_temp, cooling_rate)
+        candidate_pos = simulated_annealing(environment, x_range, y_range, initial_temp, cooling_rate, old_room_pos)
         obj = calculate_objective(candidate_pos, environment)
         #  print(obj)
         if max_obj is None or obj > max_obj:

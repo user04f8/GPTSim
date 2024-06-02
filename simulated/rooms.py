@@ -1,4 +1,4 @@
-from typing import Dict, Set, Optional, Iterable
+from typing import Dict, Set, Optional, Iterable, List
 
 from uuid import UUID, uuid4
 
@@ -14,9 +14,14 @@ class Room:
             self.connect(room)
         if environment is not None:
             environment.all_rooms_by_name[name] = self
+        self.recent_statements: List[List[str]] = [[], [], [], [], []]
 
     def __str__(self):
         return self.name
+    
+    def tick(self):
+        self.recent_statements = self.recent_statements[1:]
+        self.recent_statements.append([])
 
     def add_agent(self, agent):
         self.agents.add(agent)
@@ -28,6 +33,7 @@ class Room:
         for agent in self.agents:
             if agent is not source:
                 agent.hear_statement(statement)
+        self.recent_statements[-1].append(statement)
 
     def find(self, agent: 'Agent') -> Optional['Room']:
         if agent in self.agents:
@@ -45,14 +51,14 @@ class Room:
         return {room.name for room in self.adjacent_rooms}
     
     def get_room_if_adjacent(self, room_name):
-        room = {room for room in self.adjacent_rooms if room.name == room_name}
+        room = [room for room in self.adjacent_rooms if room.name == room_name]
         if len(room) == 0:
-            raise RoomException(f'Room not found: {room_name}')
+            raise RoomException(f'Room not found: {room_name}; adjacent rooms: {[room.name for room in self.adjacent_rooms]}')
             # self.rooms[room_name] = Room(room_name)
         elif len(room) >= 2:
             print(f'WARN: Duplicate rooms with same name: {room_name} (choosing arbitrary)')
 
-        return room.pop()
+        return room[0]
 
 class Environment:
     def __init__(self, default='DEFAULT'):
@@ -61,6 +67,10 @@ class Environment:
         self.all_agents_by_name: Dict[str, Agent] = {}
 
         self.env_name: str = ''
+
+    def tick(self):
+        for room in self.all_rooms_by_name.values():
+            room.tick()
 
     # def get_agent(self, agent_name: str) -> "Agent":
     #     return self.all_agents[agent_name]

@@ -1,4 +1,5 @@
 from datetime import datetime
+import importlib
 
 from termcolor import cprint
 
@@ -24,6 +25,10 @@ def warn_log(msg):
     with open(LOG_FNAME, 'a+') as f:
         f.write(str(msg) + '\n')
 
+
+def threadsafe_start_pygame_loop(init_env, *events):
+    render = importlib.import_module('render')  # necessary since render.py imports pygame which is not threadsafe
+    render.PygameView(init_env).loop(*events)
 
 
 async def await_text_input():

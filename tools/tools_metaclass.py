@@ -15,14 +15,14 @@ class EnvironmentProperty:
         self.default = default
 
 class ToolReq:
-    def __init__(self, *values: str | 'ToolReq'):
+    def __init__(self, *values):
         self.values = values
 
     def validate(self, roles: Set[str]):
         return all(sub_tool_req in roles if isinstance(sub_tool_req, str) else sub_tool_req.validate(roles) for sub_tool_req in self.values)
 
 class ToolReqAny:
-    def __init__(self, *values: str | 'ToolReq'):
+    def __init__(self, *values):
         self.values = values
 
     def validate(self, roles: Set[str]):

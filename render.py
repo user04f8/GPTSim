@@ -1,11 +1,12 @@
 import asyncio
 import threading
+import queue
 import pygame
 from pygame import gfxdraw  # need explicit import for gfxdraw
 import sys
 from math import hypot, sin, cos, atan2
 import colorsys
-from typing import Dict, Tuple
+from typing import Dict, Tuple, List
 import hashlib
 
 # from termcolor import cprint
@@ -68,15 +69,22 @@ class PygameView:
         self.update_agent_colors()
         self.update_room_pos()
 
-    def update_room_pos(self):
+    def update_room_pos(self, old_room_pos=None):
         x_min = y_min = self.margin
         x_max = self.screen_width - self.margin
         y_max = self.screen_height - self.margin
-        self.render_data.room_positions = optimize_room_positions(self.environment, (x_min, x_max), (y_min, y_max)) # set positions
+        self.render_data.room_positions = optimize_room_positions(self.environment, (x_min, x_max), (y_min, y_max), old_room_pos) # set positions
 
     def update_agent_colors(self):
         for i, agent in enumerate(self.environment.all_agents_by_name.values()):
             self.render_data.agent_colors[agent] = rgb_float_to_int(colorsys.hsv_to_rgb(i / len(self.environment.all_agents_by_name), 0.9, 0.9))
+
+    def check_env_updates(self, old_env: Environment):
+        if len(old_env.all_rooms_by_name) != len(self.environment.all_rooms_by_name):
+            self.update_room_pos(self.render_data.room_positions)
+
+        if len(old_env.all_agents_by_name) != len(self.environment.all_agents_by_name):
+            self.update_agent_colors()
 
     def int_rescale(self, x):
         return int(self.scale * x)
@@ -138,22 +146,38 @@ class PygameView:
         
         pygame.display.flip()
 
-    def loop(self, render_event: asyncio.Event):
+    def loop(self, data_queue: asyncio.Queue, render_event: asyncio.Event, update_agents_event: asyncio.Event, update_rooms_event: asyncio.Event, stop_event: asyncio.Event):
         running = True
         while running:
+            old_env = self.environment
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
+                # print(event)
+            if stop_event.is_set():
+                running = False
+                break
+            if not data_queue.empty():
+                data = data_queue.get_nowait()
+                print(f'Unhandled data: {data}')
+                data_queue.task_done()
 
-            self.render()
-
+            if update_agents_event.is_set():
+                self.update_agent_colors()
+                update_agents_event.clear()
+            if update_rooms_event.is_set():
+                self.update_room_pos()
+                update_rooms_event.clear()
             if render_event.is_set():
-                print('HERE')
+                self.render()
                 render_event.clear()
+            
             pygame.time.wait(100)
+            self.check_env_updates(old_env)
 
-    def start_loop(self, render_event: asyncio.Event):
-        threading.Thread(target=self.loop, args=(render_event,), daemon=True).start()
+    # def start_loop(self, render_event: asyncio.Event):
+    #     threading.Thread(target=self.loop, args=(render_event,), daemon=True).start()
+    #     PYGAME IS NOT THREADSAFE so this doesn't work consistently
 
 if __name__ == '__main__':
     from simulated.rooms import TownEnvironment, Agent
