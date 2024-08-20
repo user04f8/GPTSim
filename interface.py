@@ -1,8 +1,11 @@
 from simulated.agent_wrapper import AsyncAgentWrapper
-    
+
+
 class AsyncUserAgent(AsyncAgentWrapper):
     TYPE = 'User'
     async def get_response(self):
+        raise NotImplementedError()  # TODO
+    
         response = await chat_completion_request(
             messages=self.message_history,
             tools=self.tools,

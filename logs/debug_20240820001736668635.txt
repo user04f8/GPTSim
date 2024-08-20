@@ -1,0 +1,49 @@
+Eve[GPT] generated response: 
+ChatCompletionMessage(content=None, refusal=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_uug2Mycsr0vAVCYnvkGVROhn', function=Function(arguments='{}', name='get_current_room'), type='function')])
+Bob[GPT] generated response: 
+ChatCompletionMessage(content=None, refusal=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_156SgW8P8dOBrlQ0mcvS5V6H', function=Function(arguments='{}', name='get_current_room'), type='function')])
+Alice[GPT] generated response: 
+ChatCompletionMessage(content=None, refusal=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_vobUx2puCs4H07vHLSOIh2fp', function=Function(arguments='{}', name='get_agents'), type='function')])
+Bob[GPT] generated response: 
+ChatCompletionMessage(content=None, refusal=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_TBECKAtfJOki5BxUoZmd9rI7', function=Function(arguments='{"room":"Palace"}', name='move'), type='function')])
+Eve[GPT] generated response: 
+ChatCompletionMessage(content=None, refusal=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_BVuWmHER63p5PXUmIeHOZC67', function=Function(arguments='{}', name='get_adjacent_rooms'), type='function')])
+Alice[GPT] generated response: 
+ChatCompletionMessage(content=None, refusal=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_PdvmfF81fGy8oRN7BUevZcGM', function=Function(arguments='{"statement": "Hey Eve, how are you today?"}', name='say'), type='function'), ChatCompletionMessageToolCall(id='call_mk12U3GkZr4amTleM7bM1qTx', function=Function(arguments='{"statement": "Hey Bob, how\'s it going?"}', name='say'), type='function')])
+Alice[GPT] generated response: 
+ChatCompletionMessage(content=None, refusal=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_zlQjt6Fndsp7VfStqSS9aTEk', function=Function(arguments='{}', name='get_adjacent_rooms'), type='function')])
+Bob[GPT] generated response: 
+ChatCompletionMessage(content=None, refusal=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_5OG9NDUVMayhWe1e1z7StsxJ', function=Function(arguments='{"statement":"Everyone in Townton, please make your way to the throne room within the Palace. Thank you!"}', name='say'), type='function')])
+Eve[GPT] generated response: 
+ChatCompletionMessage(content=None, refusal=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_Ks3Mw3RnERxaubWE6ve6BDNE', function=Function(arguments='{"name": "Alice"}', name='find_agent'), type='function'), ChatCompletionMessageToolCall(id='call_KewyddKZKkYG5grlCZy5OMuF', function=Function(arguments='{"name": "Bob"}', name='find_agent'), type='function')])
+Eve[GPT] generated response: 
+ChatCompletionMessage(content=None, refusal=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_heItREX9D7gAMQXSvrc7eWJR', function=Function(arguments='{"room":"Market"}', name='move'), type='function')])
+Alice[GPT] generated response: 
+ChatCompletionMessage(content=None, refusal=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_wqDPKqH6xO6Mxxa0XqDndebs', function=Function(arguments='{"room":"Palace"}', name='move'), type='function')])
+WARN: Bob[GPT] generated nonempty content "I have directed everyone in Townton to go to the throne room within the Palace."
+Bob[GPT] generated response: 
+ChatCompletionMessage(content='I have directed everyone in Townton to go to the throne room within the Palace.', refusal=None, role='assistant', function_call=None, tool_calls=None)
+Alice[GPT] generated response: 
+ChatCompletionMessage(content=None, refusal=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_fjjrZ6PMGEs5mFAFCwgylSs0', function=Function(arguments='{}', name='get_current_room'), type='function')])
+Bob[GPT] generated response: 
+ChatCompletionMessage(content=None, refusal=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_P1vEpo9sedNSNfRGddleztiD', function=Function(arguments='{"name":"Alice"}', name='find_agent'), type='function')])
+Eve[GPT] generated response: 
+ChatCompletionMessage(content=None, refusal=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_JoZBn9Qr0xijzrCDUKN8timK', function=Function(arguments='{"statement":"Hello Alice and Bob, welcome to the Market! Are you both interested in staying here for a while and exploring the offerings?"}', name='say'), type='function')])
+Bob[GPT] generated response: 
+ChatCompletionMessage(content=None, refusal=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_0VlFxpPq3h5ZZvEjCeEZaYwW', function=Function(arguments='{"statement":"Alice, please make your way to the throne room. Thank you!"}', name='say'), type='function')])
+Alice[GPT] generated response: 
+ChatCompletionMessage(content=None, refusal=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_JLpbOWSmMjxnM9aLNUUzjWes', function=Function(arguments='{"statement": "Hey Eve, do you need help with anything at the Market?"}', name='say'), type='function'), ChatCompletionMessageToolCall(id='call_YNTHvBiPtLxHWM7lA6byn7x4', function=Function(arguments='{"statement": "Bob, how is the Palace treating you?"}', name='say'), type='function')])
+WARN: Eve[GPT] generated nonempty content "I have invited Alice and Bob to stay at the Market. Let's see if they are interested!"
+Eve[GPT] generated response: 
+ChatCompletionMessage(content="I have invited Alice and Bob to stay at the Market. Let's see if they are interested!", refusal=None, role='assistant', function_call=None, tool_calls=None)
+Alice[GPT] generated response: 
+ChatCompletionMessage(content=None, refusal=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_WBQW2vLvnYB5kjx07hpswhGB', function=Function(arguments='{}', name='get_agents'), type='function')])
+Eve[GPT] generated response: 
+ChatCompletionMessage(content=None, refusal=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_as3kMNu7RnF6thFgn5OIvXYK', function=Function(arguments='{}', name='get_agents'), type='function')])
+Bob[GPT] generated response: 
+ChatCompletionMessage(content=None, refusal=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_ysxy2pnd8Hb1T8DSiIDqX3RI', function=Function(arguments='{"statement": "Alice, please make your way to the throne room. Thank you!"}', name='say'), type='function'), ChatCompletionMessageToolCall(id='call_EyDmny55YnT0hu5yiZpIB0WH', function=Function(arguments='{"statement": "Alice: This is a message!"}', name='say'), type='function')])
+WARN: Eve[GPT] generated nonempty content "Alice and Bob are both in the Market. Let's see if they respond to your invitation!"
+Eve[GPT] generated response: 
+ChatCompletionMessage(content="Alice and Bob are both in the Market. Let's see if they respond to your invitation!", refusal=None, role='assistant', function_call=None, tool_calls=None)
+Alice[GPT] generated response: 
+ChatCompletionMessage(content=None, refusal=None, role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_N03FTIC6NwWZ2l7e8gOSdimR', function=Function(arguments='{"name":"Bob"}', name='find_agent'), type='function')])
